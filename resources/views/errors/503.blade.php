@@ -59,7 +59,7 @@
                             <p class="mb-3">
                                 Sorry for the inconvenience but we're performing some maintenance at the moment
                             </p>
-                            <img class="img-fluid" src="{{ asset_admin('images/pages/under-maintenance.svg') }}" alt="Error page" />
+                            <img class="img-fluid" src="{{ asset_admin('images/pages/error.svg') }}" alt="Error page" />
                         </div>
                     </div>
                 </div>
