@@ -17,6 +17,10 @@ class AppMiddleware
             'prevent.back.history' => PreventBackHistoryMiddleware::class,
         ]);
 
-        $middleware->append([]);
+        $middleware->append([
+            \Fahlisaputra\Minify\Middleware\MinifyHtml::class,
+            \Fahlisaputra\Minify\Middleware\MinifyCss::class,
+            \Fahlisaputra\Minify\Middleware\MinifyJavascript::class,
+        ]);
     }
 }
