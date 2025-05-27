@@ -69,7 +69,7 @@
             Nomor Antrian Saat Ini
         </h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 w-full max-w-5xl md:max-w-6xl lg:max-w-7xl xl:max-w-[1600px] 2xl:max-w-[1920px] flex-shrink-0" id="queueDisplay">
+        <div class="flex flex-wrap justify-center items-start gap-2 sm:gap-4 w-full max-w-5xl md:max-w-6xl lg:max-w-7xl xl:max-w-[1600px] 2xl:max-w-[1920px] flex-shrink-0" id="queueDisplay">
             <!-- Antrean akan dimuat dari JS -->
         </div>
     </div>
