@@ -142,7 +142,7 @@
                     success: function(response) {
                         var no = ini.data('no_antrean');
 
-                        var text = "Nomor antrian " + no.split('').join(' ') + ", dipanggil, silahkan menuju loket.";
+                        var text = "Nomor antrian " + no.split('').join(' ') + ", dipanggil, silahkan menuju loading dock.";
 
                         if (response.status) {
                             speakText(text);
