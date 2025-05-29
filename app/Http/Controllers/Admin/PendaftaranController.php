@@ -48,7 +48,11 @@ class PendaftaranController extends Controller
 
     public function list()
     {
-        $data = Pendaftaran::with(['toKendaraan', 'toMetode'])->latest()->get();
+        $date = Carbon::now();
+        $from = $date->format('Y-m-d');
+        $to   = $date->format('Y-m-d');
+
+        $data = Pendaftaran::with(['toKendaraan', 'toMetode'])->whereBetween('created_at', [$from, $to])->latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()

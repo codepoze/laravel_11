@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MetodeController;
 use App\Http\Controllers\Admin\PendaftaranController;
 use App\Http\Controllers\Admin\AntreanController;
 use App\Http\Controllers\Admin\DisplayController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PendaftaranProdukController;
 use App\Http\Controllers\Admin\TPendaftaranProdukController;
 use Illuminate\Support\Facades\Route;
@@ -120,4 +121,10 @@ Route::middleware('auth.session', 'prevent.back.history')->prefix('admin')->as('
         Route::post('/del', 'del')->name('del');
     });
     // end:: t_pendaftaran_produk
+
+    // begin:: laporan
+    Route::controller(LaporanController::class)->prefix('laporan')->as('laporan.')->group(function () {
+        Route::get('/antrean', 'antrean')->name('antrean');
+    });
+    // end:: laporan
 });

@@ -80,6 +80,15 @@
                 </a>
             </li>
 
+            <li class="navigation-header">
+                <span>Laporan</span><i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item {{ request()->is('admin/laporan/antrean') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.laporan.antrean') }}">
+                    <i data-feather="file-text"></i><span class="menu-title text-truncate">Antrean</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>

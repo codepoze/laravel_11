@@ -61,3 +61,9 @@ Breadcrumbs::for('admin.antrean.index', function (BreadcrumbTrail $trail) {
 
     $trail->push('Antrean', route('admin.antrean.index'));
 });
+
+Breadcrumbs::for('admin.laporan.antrean', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.antrean.index');
+
+    $trail->push('Laporan', route('admin.laporan.antrean'));
+});

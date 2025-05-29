@@ -6,6 +6,7 @@ use App\Events\CallTheQueue;
 use App\Http\Controllers\Controller;
 use App\Libraries\Template;
 use App\Models\Antrean;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -17,9 +18,18 @@ class AntreanController extends Controller
         return Template::load('admin', 'Antrean', 'antrean', 'view');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $data = Antrean::with(['toPendaftaran.toKendaraan', 'toPendaftaran.toMetode'])->latest()->get();
+        if (isset($request->from) && isset($request->to)) {
+            $from = $request->from;
+            $to   = $request->to;
+        } else {
+            $date = Carbon::now();
+            $from = $date->format('Y-m-d');
+            $to   = $date->format('Y-m-d');
+        }
+
+        $data = Antrean::with(['toPendaftaran.toKendaraan', 'toPendaftaran.toMetode'])->whereBetween('created_at', [$from, $to])->latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
