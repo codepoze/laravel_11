@@ -204,11 +204,6 @@
                         data: 'jam',
                         class: 'text-center'
                     },
-                    {
-                        title: 'Panggil',
-                        data: 'panggil',
-                        class: 'text-center'
-                    },
                 ],
             });
 
