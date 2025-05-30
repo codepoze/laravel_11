@@ -25,8 +25,8 @@ class AntreanController extends Controller
             $to   = $request->to;
         } else {
             $date = Carbon::now();
-            $from = $date->format('Y-m-d');
-            $to   = $date->format('Y-m-d');
+            $from = $date->startOfDay()->format('Y-m-d H:i:s');
+            $to   = $date->endOfDay()->format('Y-m-d H:i:s');
         }
 
         $data = Antrean::with(['toPendaftaran.toKendaraan', 'toPendaftaran.toMetode'])->whereBetween('created_at', [$from, $to])->latest()->get();

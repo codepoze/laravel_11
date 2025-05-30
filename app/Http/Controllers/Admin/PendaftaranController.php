@@ -49,8 +49,8 @@ class PendaftaranController extends Controller
     public function list()
     {
         $date = Carbon::now();
-        $from = $date->format('Y-m-d');
-        $to   = $date->format('Y-m-d');
+        $from = $date->startOfDay()->format('Y-m-d H:i:s');
+        $to   = $date->endOfDay()->format('Y-m-d H:i:s');
 
         $data = Pendaftaran::with(['toKendaraan', 'toMetode'])->whereBetween('created_at', [$from, $to])->latest()->get();
 
