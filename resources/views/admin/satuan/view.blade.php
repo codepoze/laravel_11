@@ -17,9 +17,11 @@
                         </div>
                         <div class="dt-action-buttons text-end">
                             <div class="dt-buttons d-inline-flex">
-                                <button type="button" id="add" class="btn btn-sm btn-relief-success" data-bs-toggle="modal" data-bs-target="#modal-add-upd">
-                                    <i data-feather='plus'></i>&nbsp;<span>Tambah</span>
-                                </button>
+                                @can('satuan-create')
+                                    <button type="button" id="add" class="btn btn-sm btn-relief-success" data-bs-toggle="modal" data-bs-target="#modal-add-upd">
+                                        <i data-feather='plus'></i>&nbsp;<span>Tambah</span>
+                                    </button>
+                                @endcan
                             </div>
                         </div>
                     </div>

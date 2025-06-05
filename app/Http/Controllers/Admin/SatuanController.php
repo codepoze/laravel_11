@@ -24,10 +24,18 @@ class SatuanController extends Controller
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-                return '
-                    <button type="button" id="upd" data-id="' . my_encrypt($row->id_satuan) . '" class="btn btn-sm btn-action btn-relief-primary" data-bs-toggle="modal" data-bs-target="#modal-add-upd"><i data-feather="edit"></i>&nbsp;<span>Ubah</span></button>&nbsp;
-                    <button type="button" id="del" data-id="' . my_encrypt($row->id_satuan) . '" class="btn btn-sm btn-action btn-relief-danger"><i data-feather="trash"></i>&nbsp;<span>Hapus</span></button>
-                ';
+                $action = '';
+                if (can('satuan-update')) {
+                    $action .= '
+                        <button type="button" id="upd" data-id="' . my_encrypt($row->id_satuan) . '" class="btn btn-sm btn-action btn-relief-primary" data-bs-toggle="modal" data-bs-target="#modal-add-upd"><i data-feather="edit"></i>&nbsp;<span>Ubah</span></button>&nbsp;
+                    ';
+                }
+                if (can('satuan-delete')) {
+                    $action .= '
+                        <button type="button" id="del" data-id="' . my_encrypt($row->id_satuan) . '" class="btn btn-sm btn-action btn-relief-danger"><i data-feather="trash"></i>&nbsp;<span>Hapus</span></button>
+                    ';
+                }
+                return $action;
             })
             ->make(true);
     }

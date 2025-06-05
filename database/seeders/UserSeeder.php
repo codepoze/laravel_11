@@ -25,7 +25,14 @@ class UserSeeder extends Seeder
         $role = Role::create(['name' => 'admin']);
 
         $role->givePermissionTo([
-            'agama-read',
+            'satuan-read',
+            // 'satuan-create',
+            // 'satuan-update',
+            // 'satuan-delete',
+            'produk-read',
+            // 'produk-create',
+            // 'produk-update',
+            // 'produk-delete',
         ]);
 
         $user->assignRole('admin');

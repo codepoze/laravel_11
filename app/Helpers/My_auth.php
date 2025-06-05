@@ -30,3 +30,10 @@ if (!function_exists('is_valid_password')) {
         }
     }
 }
+
+if (!function_exists('can')) {
+    function can($permission)
+    {
+        return auth()->check() && auth()->user()->can($permission);
+    }
+}

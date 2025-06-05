@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AntreanController;
 use App\Http\Controllers\Admin\DisplayController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PendaftaranProdukController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\TPendaftaranProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,16 @@ Route::middleware('auth.session', 'prevent.back.history')->prefix('admin')->as('
         Route::get('/', 'index')->name('index');
     });
 
+    // begin:: permission
+    Route::controller(PermissionController::class)->prefix('permission')->as('permission.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/list', 'list')->name('list');
+        Route::post('/show', 'show')->name('show');
+        Route::post('/save', 'save')->name('save');
+        Route::post('/del', 'del')->name('del');
+    });
+    // end:: permission
+
     // begin:: akun
     Route::controller(AkunController::class)->prefix('akun')->as('akun.')->group(function () {
         Route::get('/', 'index')->name('index');
@@ -39,21 +50,21 @@ Route::middleware('auth.session', 'prevent.back.history')->prefix('admin')->as('
 
     // begin:: satuan
     Route::controller(SatuanController::class)->prefix('satuan')->as('satuan.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/list', 'list')->name('list');
-        Route::post('/show', 'show')->name('show');
-        Route::post('/save', 'save')->name('save');
-        Route::post('/del', 'del')->name('del');
+        Route::get('/', 'index')->name('index')->middleware('permission:satuan-read');
+        Route::get('/list', 'list')->name('list')->middleware('permission:satuan-read');
+        Route::post('/show', 'show')->name('show')->middleware('permission:satuan-read');
+        Route::post('/save', 'save')->name('save')->middleware('permission:satuan-create|satuan-update');
+        Route::post('/del', 'del')->name('del')->middleware('permission:satuan-delete');
     });
     // end:: satuan
 
     // begin:: produk
     Route::controller(ProdukController::class)->prefix('produk')->as('produk.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/list', 'list')->name('list');
-        Route::post('/show', 'show')->name('show');
-        Route::post('/save', 'save')->name('save');
-        Route::post('/del', 'del')->name('del');
+        Route::get('/', 'index')->name('index')->middleware('permission:produk-read');
+        Route::get('/list', 'list')->name('list')->middleware('permission:produk-read');
+        Route::post('/show', 'show')->name('show')->middleware('permission:produk-read');
+        Route::post('/save', 'save')->name('save')->middleware('permission:produk-create|produk-update');
+        Route::post('/del', 'del')->name('del')->middleware('permission:produk-delete');
     });
     // end:: produk
 

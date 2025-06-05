@@ -14,7 +14,35 @@ class PermissionSeeder extends Seeder
     {
         $data = [
             [
-                'name'       => 'agama-read',
+                'name'       => 'satuan-read',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'satuan-create',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'satuan-update',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'satuan-delete',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'produk-read',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'produk-create',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'produk-update',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'produk-delete',
                 'guard_name' => 'web',
             ],
         ];

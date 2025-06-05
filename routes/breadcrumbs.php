@@ -7,6 +7,11 @@ Breadcrumbs::for('admin.dashboard.index', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('admin.dashboard.index'));
 });
 
+Breadcrumbs::for('admin.permission.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard.index');
+
+    $trail->push('Permission', route('admin.permission.index'));
+});
 
 Breadcrumbs::for('admin.akun.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard.index');

@@ -25,23 +25,42 @@
                 </a>
             </li>
 
+            <li class="navigation-header">
+                <span>Pengaturan</span><i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item {{ request()->is('admin/permission') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.permission.index') }}">
+                    <i data-feather="lock"></i><span class="menu-title text-truncate">Permission</span>
+                </a>
+            </li>
+
+            <li class="navigation-header">
+                <span>Master</span><i data-feather="more-horizontal"></i>
+            </li>
+            @canany(['satuan-read', 'produk-read'])
             <li class="nav-item">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather="list"></i><span class="menu-title text-truncate">Master Produk</span>
                 </a>
                 <ul class="menu-content">
+                    @can('satuan-read')
                     <li>
                         <a class="d-flex align-items-center" href="{{ route('admin.satuan.index') }}">
                             <i data-feather="tag"></i><span class="menu-item text-truncate">Satuan</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('produk-read')
                     <li>
                         <a class="d-flex align-items-center" href="{{ route('admin.produk.index') }}">
                             <i data-feather="package"></i><span class="menu-item text-truncate">Produk</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </li>
+            @endcanany
+
 
             <li class="nav-item">
                 <a class="d-flex align-items-center" href="#">
